@@ -8,10 +8,28 @@
 
 import UIKit
 
+enum SearchScope: CaseIterable {
+    case title
+    case artist
+}
+
 class SongViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var songSearch: UISearchBar!
+    
+    var currentScope = SearchScope.title
+    var currentSearch = "" {
+        didSet {
+            switch currentScope {
+            case .title:
+                songs = Song.loveSongs.filter { $0.name.lowercased().contains(currentSearch.lowercased())}
+            case .artist:
+                songs = Song.loveSongs.filter { $0.artist.lowercased().contains(currentSearch.lowercased())}
+            }
+        }
+    }
+    
     
     var songs = [Song]() {
         didSet {
@@ -22,6 +40,7 @@ class SongViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        songSearch.delegate = self
         songs = Song.loveSongs
     }
     
@@ -47,5 +66,32 @@ extension SongViewController: UITableViewDataSource {
         cell.detailTextLabel?.text = aSong.artist
         return cell
     }
+}
+
+extension SongViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            songs = Song.loveSongs
+            return
+        }
+        currentSearch = searchText
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        switch selectedScope {
+        case 0:
+            currentScope = .title
+        case 1:
+            currentScope = .artist
+        default:
+            break 
+        }
+    }
+    
 }
 
