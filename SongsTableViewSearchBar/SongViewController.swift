@@ -56,6 +56,9 @@ class SongViewController: UIViewController {
 extension SongViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if songs.count == 0 {
+            
+        }
         return songs.count
     }
     
@@ -89,7 +92,7 @@ extension SongViewController: UISearchBarDelegate {
         case 1:
             currentScope = .artist
         default:
-            break 
+            break
         }
     }
     
