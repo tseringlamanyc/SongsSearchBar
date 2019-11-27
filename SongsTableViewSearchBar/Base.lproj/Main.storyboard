@@ -68,6 +68,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZTa-cF-o2T"/>
                     <connections>
+                        <outlet property="songSearch" destination="Apx-Cf-MWF" id="ks6-09-5Mt"/>
                         <outlet property="tableView" destination="KrF-ax-7hN" id="rOc-8r-mJw"/>
                     </connections>
                 </viewController>
@@ -83,7 +84,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OwT-LA-Yxx">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loveSongs" translatesAutoresizingMaskIntoConstraints="NO" id="OwT-LA-Yxx">
                                 <rect key="frame" x="0.0" y="88" width="414" height="358.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbI-V9-DH6">
@@ -144,4 +145,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="133.92857142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="loveSongs" width="636" height="421"/>
+    </resources>
 </document>
