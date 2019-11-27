@@ -23,6 +23,13 @@ class SongViewController: UIViewController {
         tableView.dataSource = self
         songs = Song.loveSongs
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailVC = segue.destination as? DetailViewController, let indexpath = tableView.indexPathForSelectedRow else {
+            fatalError()
+        }
+        detailVC.song = songs[indexpath.row]
+    }
 
 }
 

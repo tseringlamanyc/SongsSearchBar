@@ -15,9 +15,13 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     
+    
+    var song: Song!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        songLabel.text = song.name
+        artistLabel.text = song.artist
     }
     
 
