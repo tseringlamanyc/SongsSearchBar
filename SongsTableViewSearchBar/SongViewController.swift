@@ -57,7 +57,11 @@ extension SongViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if songs.count == 0 {
-            
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 21))
+            label.textAlignment = .center
+            view.addSubview(label)
+            label.text = "No Song"
+            tableView.backgroundView = label
         }
         return songs.count
     }
